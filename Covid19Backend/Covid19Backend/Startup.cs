@@ -1,3 +1,4 @@
+using Covid19Backend.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -22,6 +23,10 @@ namespace Covid19Backend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            #region Service Registration 
+            services.AddTransient<IEmailService, EmailService>();
+            #endregion
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
