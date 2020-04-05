@@ -1,4 +1,6 @@
 using Covid19Backend.Services;
+using Covid19Backend.Services.Formatter;
+using Covid19Backend.Services.WebDataScrappingService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +28,8 @@ namespace Covid19Backend
 
             #region Service Registration 
             services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<IEmailBodyFormatter, EmailBodyFormatter>();
+            services.AddTransient<IWebDataScrapingService, WebDataScrapingService>();
             #endregion
 
             // In production, the React files will be served from this directory

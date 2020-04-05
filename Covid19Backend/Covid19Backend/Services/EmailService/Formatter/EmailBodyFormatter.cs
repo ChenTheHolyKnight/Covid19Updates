@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Covid19Backend.Services.Formatter
 {
-    public class EmailBodyFormatter
+    public class EmailBodyFormatter: IEmailBodyFormatter
     {
         
         public string GenerateEmailBody()
