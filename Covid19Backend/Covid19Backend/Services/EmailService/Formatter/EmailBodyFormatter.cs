@@ -13,6 +13,9 @@ namespace Covid19Backend.Services.Formatter
         
         public string GenerateEmailBody(DailyStats stats)
         {
+            DateTime date = DateTime.Today;
+            string dateStr = string.Format("{0} {1}, {2}", date.Day, date.ToString("MMMM"), date.Year);
+
             string body = string.Empty;
 
             body = @"<!doctype html>
@@ -44,7 +47,7 @@ namespace Covid19Backend.Services.Formatter
                             <img src = ""https://www.knowablemagazine.org/sites/default/files/styles/1600_600/public/articles/442/coronavirus-structure-1600x600_0.jpg?itok=usw1MShH"" style=""width:100%;height:40vh;"">
                             <div class=""w3-container"">
                                 <h3><b>New Zealand</b></h3>
-                                <h5><b>Summary on</b> <span class=""w3-opacity"">" + "April 2, 2020"+@"</span></h5>
+                                <h5><b>Summary on</b> <span class=""w3-opacity"">" + dateStr+@"</span></h5>
                             </div>
                             <div class=""w3-container"">
                                 <p>Number of confirmed cases:   " +	stats.ConfirmedCases +  @"</p>
