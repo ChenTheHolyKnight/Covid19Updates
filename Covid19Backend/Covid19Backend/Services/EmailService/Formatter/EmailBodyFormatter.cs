@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Covid19Backend.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +11,7 @@ namespace Covid19Backend.Services.Formatter
     public class EmailBodyFormatter: IEmailBodyFormatter
     {
         
-        public string GenerateEmailBody()
+        public string GenerateEmailBody(DailyStats stats)
         {
             string body = string.Empty;
 
@@ -23,6 +24,16 @@ namespace Covid19Backend.Services.Formatter
                         <link rel = ""stylesheet"" href = ""https://www.w3schools.com/w3css/4/w3.css"">       
                         <link rel = ""stylesheet"" href = ""https://fonts.googleapis.com/css?family=Raleway"">
                      </head> 
+                     <style>
+                        i {
+                          border: solid red;
+                          border-width: 0 3px 3px 0;
+                          display: inline-block;
+                          padding: 3px;
+                          transform: rotate(-135deg);
+                          -webkit-transform: rotate(-135deg);
+                        }
+                     </style>
                     
                      <!-- Header -->
                      <header class=""w3-container w3-center w3-padding-32"">
@@ -33,13 +44,13 @@ namespace Covid19Backend.Services.Formatter
                             <img src = ""https://www.knowablemagazine.org/sites/default/files/styles/1600_600/public/articles/442/coronavirus-structure-1600x600_0.jpg?itok=usw1MShH"" style=""width:100%;height:40vh;"">
                             <div class=""w3-container"">
                                 <h3><b>New Zealand</b></h3>
-                                <h5><b>Summary on</b> <span class=""w3-opacity"">April 2, 2020</span></h5>
+                                <h5><b>Summary on</b> <span class=""w3-opacity"">" + "April 2, 2020"+@"</span></h5>
                             </div>
                             <div class=""w3-container"">
-                                <p>Number of confirmed cases:	723</p>
-                                <p>Number of probable cases:	74</p>
-                                <p>Number of recovered cases:	92</p>
-                                <p>TNumber of deaths:	1</p>
+                                <p>Number of confirmed cases:   " +	stats.ConfirmedCases +  @"</p>
+                                <p>Number of probable cases:    " +	stats.ProbableCases + @"</p>
+                                <p>Number of recovered cases:   " + stats.RecoveredCases + @"</p>
+                                <p>Number of deaths:            "+	stats.TotalDeath +  @"</p>
                                 <div class=""w3-row"">
                                     <div class=""w3-col m8 s12"">
                                         <p><button class=""w3-button w3-padding-large w3-white w3-border""><b>READ MORE »</b></button></p>

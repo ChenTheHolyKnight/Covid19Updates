@@ -1,4 +1,5 @@
 ﻿using Covid19Backend.Services.Formatter;
+using Covid19Backend.Services.WebDataScrappingService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,11 @@ namespace Covid19Backend.Services
     public class EmailService:IEmailService
     {
         private readonly IEmailBodyFormatter _emailBodyFormatter;
-        public EmailService(IEmailBodyFormatter emailBodyFormatter)
+        private readonly IWebDataScrapingService _webDataScrapingService;
+        public EmailService(IEmailBodyFormatter emailBodyFormatter, IWebDataScrapingService webDataScrappingService)
         {
             _emailBodyFormatter = emailBodyFormatter;
+            _webDataScrapingService = webDataScrappingService;
         }
         public void SendEmail()
         {
@@ -22,7 +25,7 @@ namespace Covid19Backend.Services
                 mail.From = new MailAddress("covid19info1@gmail.com");
                 mail.To.Add("czha959@aucklanduni.ac.nz");
                 mail.Subject = "Covid-19 Updates";
-                string body = _emailBodyFormatter.GenerateEmailBody();
+                string body = _emailBodyFormatter.GenerateEmailBody(_webDataScrapingService.GetDailySummary());
                 mail.Body = body;
                 mail.IsBodyHtml = true;
                 
