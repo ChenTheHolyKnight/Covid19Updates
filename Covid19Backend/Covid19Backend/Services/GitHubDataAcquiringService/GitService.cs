@@ -17,6 +17,7 @@ namespace Covid19Backend.Services.GitHubDataAcquiringService
         public void GetCovidData()
         {
             _gitHelper.Clone();
+            _gitHelper.Pull();
         }
     }
 }

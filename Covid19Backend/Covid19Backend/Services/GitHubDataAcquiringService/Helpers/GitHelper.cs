@@ -19,7 +19,14 @@ namespace Covid19Backend.Services.GitHubDataAcquiringService.Helpers
 
         public void Pull()
         {
+            using (var repo = new Repository(DATA_LOCATION))
+            {
+                var signature = new LibGit2Sharp.Signature(new Identity("ChenTheHolyKnight", "czha959@aucklanduni.ac.nz"), DateTimeOffset.Now);
+                Commands.Pull(repo, signature, new PullOptions()
+                {
 
+                });
+            }
         }
 
         private bool IsDirectoryEmpty()
