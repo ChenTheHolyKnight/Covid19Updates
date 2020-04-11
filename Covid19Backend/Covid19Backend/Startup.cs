@@ -1,5 +1,6 @@
 using Covid19Backend.Models;
 using Covid19Backend.Services;
+using Covid19Backend.Services.Common;
 using Covid19Backend.Services.ExcelService;
 using Covid19Backend.Services.ExcelService.Helper;
 using Covid19Backend.Services.Formatter;
@@ -39,7 +40,7 @@ namespace Covid19Backend
             services.AddTransient<IGitHelper, GitHelper>();
             services.AddTransient<IExcelService, ExcelService>();
             services.AddTransient<IExcelHelper, ExcelHelper>();
-
+            services.AddTransient<IDirectoryHelper, DirectoryHelper>();
             //Singleton
             services.AddSingleton<IStats, Stats>();
             #endregion
