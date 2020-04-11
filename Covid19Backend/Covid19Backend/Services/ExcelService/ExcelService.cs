@@ -23,8 +23,15 @@ namespace Covid19Backend.Services.ExcelService
 
         public void GenerateStats()
         {
-            List<string> fileNames = _directory.GetFileNamesInDirectory("./Data/csse_covid_19_data/csse_covid_19_daily_reports");
-           List<WorldData> data= _excel.ReadExcel("./Data/csse_covid_19_data/csse_covid_19_daily_reports/01-22-2020.csv");
+            List<string> filePaths = _directory.GetFilePathsInDirectory("./Data/csse_covid_19_data/csse_covid_19_daily_reports");
+            foreach(string path in filePaths)
+            {
+                //List<WorldData> data= _excel.ReadExcel("./Data/csse_covid_19_data/csse_covid_19_daily_reports/01-22-2020.csv");
+                List<WorldData> data = _excel.ReadExcel(path);
+                _stats.Data.AddRange(data);
+            }
+
+           
         }
     }
 }

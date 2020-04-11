@@ -23,6 +23,13 @@ namespace Covid19Backend.Services.Common
             return filePaths;
         }
 
+        public string ExtractDateFromFileName(string fileName)
+        {
+            if (!fileName.Contains(".csv"))
+                return null;
+            return Path.GetFileNameWithoutExtension(fileName);
+        }
+
         
     }
 }

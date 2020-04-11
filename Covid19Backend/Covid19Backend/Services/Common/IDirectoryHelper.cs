@@ -9,5 +9,7 @@ namespace Covid19Backend.Services.Common
     {
         public List<string> GetFilePathsInDirectory(string dirPath);
         public List<string> GetFileNamesInDirectory(string dirPath);
+
+        public string ExtractDateFromFileName(string fileName);
     }
 }
