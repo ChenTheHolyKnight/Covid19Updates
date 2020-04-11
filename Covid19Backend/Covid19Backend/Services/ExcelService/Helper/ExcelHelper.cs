@@ -49,10 +49,7 @@ namespace Covid19Backend.Services.ExcelService.Helper
             string countryKey = (from o in recordDict where o.Key.ToLower().Contains("country") select o.Key).FirstOrDefault();
             int num = 0;
 
-            DateTime date;
-            //string d = _directory.ExtractDateFromFileName(filePath);
-            //bool isDate = DateTime.TryParseExact(_directory.ExtractDateFromFileName(filePath),"MM-dd-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date);
-            
+            DateTime date;            
             date = DateTime.TryParseExact(_directory.ExtractDateFromFileName(filePath), "MM-dd-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date) ? date : DateTime.MinValue;
 
             return new WorldData
