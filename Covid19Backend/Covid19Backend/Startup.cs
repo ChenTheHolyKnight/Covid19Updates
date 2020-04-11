@@ -1,4 +1,7 @@
+using Covid19Backend.Models;
 using Covid19Backend.Services;
+using Covid19Backend.Services.ExcelService;
+using Covid19Backend.Services.ExcelService.Helper;
 using Covid19Backend.Services.Formatter;
 using Covid19Backend.Services.GitHubDataAcquiringService;
 using Covid19Backend.Services.GitHubDataAcquiringService.Helpers;
@@ -34,6 +37,11 @@ namespace Covid19Backend
             services.AddTransient<IWebDataScrapingService, WebDataScrapingService>();
             services.AddTransient<IGitService, GitService>();
             services.AddTransient<IGitHelper, GitHelper>();
+            services.AddTransient<IExcelService, ExcelService>();
+            services.AddTransient<IExcelHelper, ExcelHelper>();
+
+            //Singleton
+            services.AddSingleton<IStats, Stats>();
             #endregion
 
             // In production, the React files will be served from this directory
