@@ -17,7 +17,7 @@ namespace Covid19Backend
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>().ConfigureServices((hostContext, services) =>
                 {
-                    services.AddHostedService<Worker>();
+                    services.AddHostedService<EmailWorker>();
                 });
     }
 }
