@@ -232,3 +232,34 @@ _Pvt_Extensions
 .fake/
 
 Data
+
+
+WebClient/client/.idea
+WebClient/client/public
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+WebClient/client/node_modules
+WebClient/client/.pnp
+WebClient/client/.pnp.js
+
+# testing
+WebClient/client/coverage
+
+# production
+WebClient/client/build
+
+# misc
+WebClient/client/.DS_Store
+WebClient/client/.env.local
+WebClient/client/.env.development.local
+WebClient/client/.env.test.local
+WebClient/client/.env.production.local
+
+# testing
+WebClient/client/npm-debug.log*
+# testing
+WebClient/client/yarn-debug.log*
+# testing
+WebClient/client/yarn-error.log*

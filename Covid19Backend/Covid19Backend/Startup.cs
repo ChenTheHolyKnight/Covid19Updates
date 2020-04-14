@@ -48,7 +48,8 @@ namespace Covid19Backend
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "ClientApp/build";
+                //configuration.RootPath = "ClientApp/build";
+                configuration.RootPath = "WebClient/client/build";
             });
         }
 
@@ -81,7 +82,8 @@ namespace Covid19Backend
 
             app.UseSpa(spa =>
             {
-                spa.Options.SourcePath = "ClientApp";
+                //spa.Options.SourcePath = "ClientApp";
+                spa.Options.SourcePath = "WebClient/client";
 
                 if (env.IsDevelopment())
                 {
