@@ -6,7 +6,7 @@ import {number} from "prop-types";
 export default class SummaryTable extends Component{
     constructor(props){
         super(props);
-        this.state = {
+        /*this.state = {
             tableData: {
                 totalCases: number,
                 totalNewCases: number,
@@ -16,14 +16,14 @@ export default class SummaryTable extends Component{
                 recoveredCases:number,
                 totalDeath: number,
                 newDeathCases:number}
-        }
+        }*/
     }
     async componentDidMount() {
-        const service = new SingleDataService()
+        /*const service = new SingleDataService()
         let data = await service.getApiData(ApiCallType.DailyReport);
         this.setState({
             tableData: data
-        })
+        })*/
     }
 
     render(){
@@ -38,28 +38,28 @@ export default class SummaryTable extends Component{
             <tbody>
             <tr>
                 <td>Total Cases</td>
-                <td>{this.state.tableData.totalCases}</td>
-                <td>{this.state.tableData.totalNewCases}</td>
+                <td>{this.props.tableData.totalCases}</td>
+                <td>{this.props.tableData.totalNewCases}</td>
             </tr>
             <tr>
                 <td>Confirmed Cases</td>
-                <td>{this.state.tableData.confirmedCases}</td>
-                <td>{this.state.tableData.confirmedNewCases}</td>
+                <td>{this.props.tableData.confirmedCases}</td>
+                <td>{this.props.tableData.confirmedNewCases}</td>
             </tr>
             <tr>
                 <td>Probable Cases</td>
-                <td>{this.state.tableData.probableCases}</td>
+                <td>{this.props.tableData.probableCases}</td>
                 <td>Need new probable cases here</td>
             </tr>
             <tr>
                 <td>Recovered Cases</td>
-                <td>{this.state.tableData.recoveredCases}</td>
+                <td>{this.props.tableData.recoveredCases}</td>
                 <td>Need new recovered cases here</td>
             </tr>
             <tr>
                 <td>Death Cases</td>
-                <td>{this.state.tableData.totalDeath}</td>
-                <td>{this.state.tableData.newDeathCases}</td>
+                <td>{this.props.tableData.totalDeath}</td>
+                <td>{this.props.tableData.newDeathCases}</td>
             </tr>
             </tbody>
         </Table>)
