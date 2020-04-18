@@ -5,7 +5,15 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 
 export class SummaryPieChart extends Component{
+    constructor(props){
+        super(props)
+    }
+
     render() {
+        const recPercentage = Math.round(this.props.tableData.recoveredCases/this.props.tableData.confirmedCases*100).toFixed(2)
+        const deathPercentage = Math.round(this.props.tableData.totalDeath/this.props.tableData.confirmedCases*100).toFixed(2)
+        const otherPercentage = 100-recPercentage-deathPercentage
+
         const options = {
             exportEnabled: false,
             animationEnabled: true,
@@ -16,13 +24,11 @@ export class SummaryPieChart extends Component{
                 showInLegend: "true",
                 legendText: "{label}",
                 indexLabelFontSize: 16,
-                indexLabel: "{label} - {y}%",
+                indexLabel: "{label}: {y}%",
                 dataPoints: [
-                    { y: 18, label: "Direct" },
-                    { y: 49, label: "Organic Search" },
-                    { y: 9, label: "Paid Search" },
-                    { y: 5, label: "Referral" },
-                    { y: 19, label: "Social" }
+                    { y: recPercentage, label: "Recovered Cases" },
+                    { y: deathPercentage, label: "Death" },
+                    { y: otherPercentage,label: "Other"}
                 ]
             }]
         }
