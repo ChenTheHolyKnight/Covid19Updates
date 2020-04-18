@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {Card,CardDeck} from "react-bootstrap";
 import SummaryTable from "./SummaryTable";
 import {SummaryPieChart} from "./SummaryPieChart";
-import {number} from "prop-types";
+import {number, string} from "prop-types";
 import {ApiCallType, SingleDataService} from "../../service/SingleDataService";
 
 export default class Home extends Component{
@@ -15,10 +15,14 @@ export default class Home extends Component{
                 totalNewCases: number,
                 confirmedCases: number,
                 confirmedNewCases: number,
+                probableNew: number,
                 probableCases: number,
                 recoveredCases:number,
+                recoveredNew: number,
                 totalDeath: number,
-                newDeathCases:number}
+                newDeathCases:number,
+                reportDate: string
+            }
         }
     }
     async componentDidMount() {
@@ -35,14 +39,14 @@ export default class Home extends Component{
                     <Card>
                         <Card.Body>
                             <Card.Title> New Zealand Summary</Card.Title>
-                            <Card.Text>On 16 May 2020</Card.Text>
+                            <Card.Text>On {this.state.tableData.reportDate}</Card.Text>
                             <SummaryTable tableData={this.state.tableData}/>
                         </Card.Body>
                     </Card>
                     <Card>
                         <Card.Body>
                             <Card.Title> Death vs Recovery</Card.Title>
-                            <Card.Text>On 16 May 2020</Card.Text>
+                            <Card.Text>On {this.state.tableData.reportDate}</Card.Text>
                             <SummaryPieChart tableData={this.state.tableData}></SummaryPieChart>
                         </Card.Body>
                     </Card>

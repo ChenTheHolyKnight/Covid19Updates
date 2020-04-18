@@ -27,7 +27,7 @@ export default class SummaryTable extends Component{
     }
 
     render(){
-        return (<Table>
+        return (<Table style={{marginTop: '10vh'}}>
             <thead>
             <tr>
                 <th>Categories</th>
@@ -49,12 +49,12 @@ export default class SummaryTable extends Component{
             <tr>
                 <td>Probable Cases</td>
                 <td>{this.props.tableData.probableCases}</td>
-                <td>Need new probable cases here</td>
+                <td>{this.props.tableData.probableNew}</td>
             </tr>
             <tr>
                 <td>Recovered Cases</td>
                 <td>{this.props.tableData.recoveredCases}</td>
-                <td>Need new recovered cases here</td>
+                <td>{this.props.tableData.recoveredNew}</td>
             </tr>
             <tr>
                 <td>Death Cases</td>
