@@ -41,9 +41,8 @@ export default class Home extends Component{
                     </Card>
                     <Card>
                         <Card.Body>
-                            <Card.Title> This is the title</Card.Title>
-                            Put other components inside the body
-                            This card should be same size as the other
+                            <Card.Title> Death vs Recovery</Card.Title>
+                            <Card.Text>On 16 May 2020</Card.Text>
                             <SummaryPieChart tableData={this.state.tableData}></SummaryPieChart>
                         </Card.Body>
                     </Card>
