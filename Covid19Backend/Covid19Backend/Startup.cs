@@ -1,4 +1,6 @@
 using Covid19Backend.Models;
+using Covid19Backend.Models.Database;
+using Covid19Backend.Repositories;
 using Covid19Backend.Services;
 using Covid19Backend.Services.Common;
 using Covid19Backend.Services.ExcelService;
@@ -15,6 +17,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 
 namespace Covid19Backend
 {
@@ -43,6 +46,15 @@ namespace Covid19Backend
             services.AddTransient<IDirectoryHelper, DirectoryHelper>();
             //Singleton
             services.AddSingleton<IStats, Stats>();
+
+
+            services.Configure<DatabaseSettings>(
+                 Configuration.GetSection(nameof(DatabaseSettings)));
+
+            services.AddSingleton<IDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
+
+            services.AddSingleton<IEmailRepository, EmailRepository>();
             #endregion
 
             // In production, the React files will be served from this directory

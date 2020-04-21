@@ -1,4 +1,5 @@
-﻿using Covid19Backend.Services.Formatter;
+﻿using Covid19Backend.Repositories;
+using Covid19Backend.Services.Formatter;
 using Covid19Backend.Services.WebDataScrappingService;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,12 @@ namespace Covid19Backend.Services
     {
         private readonly IEmailBodyFormatter _emailBodyFormatter;
         private readonly IWebDataScrapingService _webDataScrapingService;
-        public EmailService(IEmailBodyFormatter emailBodyFormatter, IWebDataScrapingService webDataScrappingService)
+        private readonly IEmailRepository _emailRepository;
+        public EmailService(IEmailBodyFormatter emailBodyFormatter, IWebDataScrapingService webDataScrappingService,IEmailRepository emailRepository)
         {
             _emailBodyFormatter = emailBodyFormatter;
             _webDataScrapingService = webDataScrappingService;
+            _emailRepository = emailRepository;
         }
         public void SendEmail()
         {
@@ -37,6 +40,11 @@ namespace Covid19Backend.Services
                     smtp.Send(mail);
                 }
             }
+        }
+
+        public void RegisterEmail(string email)
+        {
+            _emailRepository.AddEmail(email);
         }
     }
 }

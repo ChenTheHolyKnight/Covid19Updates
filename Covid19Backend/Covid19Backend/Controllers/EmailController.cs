@@ -28,5 +28,13 @@ namespace Covid19Backend.Controllers
             _emailService.SendEmail();
             return CreatedAtAction("Sent",200);
         }
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public ActionResult<string> RegisterEmail()
+        {
+            return CreatedAtAction("Created",201);
+        }
     }
 }
