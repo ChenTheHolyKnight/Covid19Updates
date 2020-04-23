@@ -8,5 +8,7 @@ namespace Covid19Backend.Services
     public interface IEmailService
     {
         public void SendEmail();
+        public void RegisterEmail(string email);
+
     }
 }
