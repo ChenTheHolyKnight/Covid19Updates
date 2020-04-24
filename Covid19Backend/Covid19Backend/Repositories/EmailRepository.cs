@@ -21,6 +21,9 @@ namespace Covid19Backend.Repositories
 
         public void AddEmail(string email)
         {
+            if (IsEmailExist(email))
+                return;
+
             _profiles.InsertOne( new UserProfile()
             {
                 Id = ObjectId.GenerateNewId().ToString(),
@@ -30,5 +33,11 @@ namespace Covid19Backend.Repositories
 
         public List<UserProfile> Get() =>
             _profiles.Find(item => true).ToList();
+
+        private bool IsEmailExist(string email)
+        {
+            return _profiles.Find(item => item.Email == email).ToList().Count > 0;
+            
+        }
     }
 }
