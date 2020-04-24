@@ -1,4 +1,5 @@
-﻿using Covid19Backend.Repositories;
+﻿using Covid19Backend.Models.Database;
+using Covid19Backend.Repositories;
 using Covid19Backend.Services.Formatter;
 using Covid19Backend.Services.WebDataScrappingService;
 using System;
@@ -23,10 +24,13 @@ namespace Covid19Backend.Services
         }
         public void SendEmail()
         {
+            List<UserProfile> destEmails = _emailRepository.Get();
+
             using (MailMessage mail = new MailMessage())
             {
                 mail.From = new MailAddress("covid19info1@gmail.com");
-                mail.To.Add("czha959@aucklanduni.ac.nz");
+                destEmails.ForEach(item => mail.To.Add(item.Email));
+                //mail.To.Add("czha959@aucklanduni.ac.nz");
                 mail.Subject = "Covid-19 Updates";
                 string body = _emailBodyFormatter.GenerateEmailBody(_webDataScrapingService.GetDailySummary());
                 mail.Body = body;
