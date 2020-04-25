@@ -1,7 +1,7 @@
 export const ApiCallType = {DailyReport:'webdata'}
 
 export class SingleDataService{
-    apiURL= 'https://localhost:44358/api/'
+    apiURL= 'https://192.168.1.3:45455/api/'
 
     async getApiData(type) {
         let builtUrl = '';
