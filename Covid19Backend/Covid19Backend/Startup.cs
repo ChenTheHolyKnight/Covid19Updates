@@ -3,6 +3,7 @@ using Covid19Backend.Models.Database;
 using Covid19Backend.Repositories;
 using Covid19Backend.Services;
 using Covid19Backend.Services.Common;
+using Covid19Backend.Services.EmailServices.Helpers;
 using Covid19Backend.Services.ExcelService;
 using Covid19Backend.Services.ExcelService.Helper;
 using Covid19Backend.Services.Formatter;
@@ -38,12 +39,13 @@ namespace Covid19Backend
             #region Service Registration 
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IEmailBodyFormatter, EmailBodyFormatter>();
+            services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IWebDataScrapingService, WebDataScrapingService>();
             services.AddTransient<IGitService, GitService>();
             services.AddTransient<IGitHelper, GitHelper>();
             services.AddTransient<IExcelService, ExcelService>();
             services.AddTransient<IExcelHelper, ExcelHelper>();
-            services.AddTransient<IDirectoryHelper, DirectoryHelper>();
+            services.AddTransient<IDirectoryHelper, DirectoryHelper>();          
             //Singleton
             services.AddSingleton<IStats, Stats>();
 

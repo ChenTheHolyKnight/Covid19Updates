@@ -1,5 +1,6 @@
 ﻿using Covid19Backend.Models.Database;
 using Covid19Backend.Repositories;
+using Covid19Backend.Services.EmailServices.Helpers;
 using Covid19Backend.Services.Formatter;
 using Covid19Backend.Services.WebDataScrappingService;
 using System;
@@ -16,17 +17,19 @@ namespace Covid19Backend.Services
         private readonly IEmailBodyFormatter _emailBodyFormatter;
         private readonly IWebDataScrapingService _webDataScrapingService;
         private readonly IEmailRepository _emailRepository;
-        public EmailService(IEmailBodyFormatter emailBodyFormatter, IWebDataScrapingService webDataScrappingService,IEmailRepository emailRepository)
+        private readonly IEmailSender _emailSender;
+        public EmailService(IEmailBodyFormatter emailBodyFormatter, IWebDataScrapingService webDataScrappingService,IEmailRepository emailRepository,IEmailSender emailSender)
         {
             _emailBodyFormatter = emailBodyFormatter;
             _webDataScrapingService = webDataScrappingService;
             _emailRepository = emailRepository;
+            _emailSender = emailSender;
         }
         public void SendEmail()
         {
             List<UserProfile> destEmails = _emailRepository.Get();
 
-            using (MailMessage mail = new MailMessage())
+            /*using (MailMessage mail = new MailMessage())
             {
                 mail.From = new MailAddress("covid19info1@gmail.com");
                 destEmails.ForEach(item => mail.To.Add(item.Email));
@@ -43,7 +46,8 @@ namespace Covid19Backend.Services
                     smtp.EnableSsl = true;
                     smtp.Send(mail);
                 }
-            }
+            }*/
+            destEmails.ForEach(item => _emailSender.SendEmail(_webDataScrapingService.GetDailySummary(),item.Email));
         }
 
         public void RegisterEmail(string email)
