@@ -32,7 +32,7 @@ namespace Covid19Backend.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public ActionResult<string> RegisterEmail([FromForm] string email)
+        public ActionResult<string> RegisterEmail([FromBody] string email)
         {
             _emailService.RegisterEmail(email);
             return CreatedAtAction("Created",201);
