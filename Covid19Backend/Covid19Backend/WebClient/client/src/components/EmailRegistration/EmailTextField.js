@@ -38,7 +38,6 @@ export default class EmailTextField extends Component {
         return (
             <Form style={{marginTop:'5vh'}} onSubmit={this.handleFormSubmit}>
                 <FormGroup>
-                    <p>Hello {this.state.email}</p>
                     <Form.Label>Email address</Form.Label>
                     <FormControl type="email"  ref={this.textInput} placeholder="Enter email" onChange={this.handleChange = this.handleChange.bind(this)} />
                     <Form.Text className="text-muted">
