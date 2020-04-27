@@ -63,7 +63,7 @@ namespace Covid19Backend.Services.Formatter
                      </div>
                      <hr>
                     </div>
-                         <p class=""w3-center"" style=""text-align: center;""><a href=""https://www.w3schools.com/html/"">Unsubscribe</a></p>
+                         <p class=""w3-center"" style=""text-align: center;""><a href=""https://192.168.1.3:45455/emailUnreg/czha959@aucklanduni.ac.nz"">Unsubscribe</a></p>
 
                     
 

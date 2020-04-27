@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import Layout from "./components/layout";
 import Home from "./components/Home/Home";
+import EmailUnreg from "./components/EmailRegistration/EmailUnreg";
 
 function App() {
   /*return (
@@ -28,6 +29,7 @@ function App() {
       <Layout>
           <Router>
               <Route exact path='/' component={Home} />
+              <Route path='/emailUnreg/:email' component={EmailUnreg} />
           </Router>
       </Layout>
   )
