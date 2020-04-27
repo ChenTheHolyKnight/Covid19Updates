@@ -37,5 +37,14 @@ namespace Covid19Backend.Controllers
             _emailService.RegisterEmail(email);
             return CreatedAtAction("Created",201);
         }
+
+        [HttpDelete]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public ActionResult<string> UnregisterEmail([FromBody] string email)
+        {
+            _emailService.UnregisterEmail(email);
+            return CreatedAtAction("Created",204);
+        }
     }
 }

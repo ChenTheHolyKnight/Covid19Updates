@@ -9,6 +9,7 @@ namespace Covid19Backend.Services
     {
         public void SendEmail();
         public void RegisterEmail(string email);
+        public void UnregisterEmail(string email);
 
     }
 }

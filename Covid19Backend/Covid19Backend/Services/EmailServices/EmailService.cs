@@ -29,30 +29,17 @@ namespace Covid19Backend.Services
         {
             List<UserProfile> destEmails = _emailRepository.Get();
 
-            /*using (MailMessage mail = new MailMessage())
-            {
-                mail.From = new MailAddress("covid19info1@gmail.com");
-                destEmails.ForEach(item => mail.To.Add(item.Email));
-                //mail.To.Add("czha959@aucklanduni.ac.nz");
-                mail.Subject = "Covid-19 Updates";
-                string body = _emailBodyFormatter.GenerateEmailBody(_webDataScrapingService.GetDailySummary());
-                mail.Body = body;
-                mail.IsBodyHtml = true;
-                
-
-                using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
-                {
-                    smtp.Credentials = new NetworkCredential("covid19info1@gmail.com", "zc83608810");
-                    smtp.EnableSsl = true;
-                    smtp.Send(mail);
-                }
-            }*/
             destEmails.ForEach(item => _emailSender.SendEmail(_webDataScrapingService.GetDailySummary(),item.Email));
         }
 
         public void RegisterEmail(string email)
         {
             _emailRepository.AddEmail(email);
+        }
+
+        public void UnregisterEmail(string email)
+        {
+            _emailRepository.Delete(email);
         }
     }
 }

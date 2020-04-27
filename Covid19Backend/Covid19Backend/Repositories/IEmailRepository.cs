@@ -10,5 +10,6 @@ namespace Covid19Backend.Repositories
     {
         public void AddEmail(string email);
         public List<UserProfile> Get();
+        public void Delete(string email);
     }
 }

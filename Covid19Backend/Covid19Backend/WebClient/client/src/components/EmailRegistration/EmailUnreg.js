@@ -1,10 +1,16 @@
 import React,{Component} from 'react'
+import {PostDataService} from "../../service/PostDataService";
 
 
 export default class EmailUnreg extends Component{
 
     constructor(props){
         super(props)
+    }
+
+    async componentDidMount() {
+        let postDataService = new PostDataService;
+        await postDataService.deleteData(this.props.match.params.email)
     }
 
     render(){

@@ -39,5 +39,10 @@ namespace Covid19Backend.Repositories
             return _profiles.Find(item => item.Email == email).ToList().Count > 0;
             
         }
+
+        public void Delete(string email)
+        {
+           _profiles.DeleteOne(profile => profile.Email == email);
+        }
     }
 }
