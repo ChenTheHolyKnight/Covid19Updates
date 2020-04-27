@@ -53,7 +53,7 @@ namespace Covid19Backend.Services.Formatter
                                 <p>Number of confirmed cases:   " +	stats.ConfirmedCases +  @"</p>
                                 <p>Number of probable cases:    " +	stats.ProbableCases + @"</p>
                                 <p>Number of recovered cases:   " + stats.RecoveredCases + @"</p>
-                                <p>Number of deaths:            "+	stats.TotalDeath +  @"</p>
+                                <p>Number of deaths:            "+	stats.TotalDeath + @"</p>
                                 <div class=""w3-row"">
                                     <div class=""w3-col m8 s12"">
                                         <p><button class=""w3-button w3-padding-large w3-white w3-border""><b>READ MORE »</b></button></p>
@@ -63,6 +63,9 @@ namespace Covid19Backend.Services.Formatter
                      </div>
                      <hr>
                     </div>
+                         <p class=""w3-center"" style=""text-align: center;""><a href=""https://www.w3schools.com/html/"">Unsubscribe</a></p>
+
+                    
 
                     </html>";
             return body;
