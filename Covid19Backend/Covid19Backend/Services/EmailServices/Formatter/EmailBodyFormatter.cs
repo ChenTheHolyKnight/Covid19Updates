@@ -11,10 +11,11 @@ namespace Covid19Backend.Services.Formatter
     public class EmailBodyFormatter: IEmailBodyFormatter
     {
         
-        public string GenerateEmailBody(DailyStats stats)
+        public string GenerateEmailBody(DailyStats stats,string email)
         {
             DateTime date = DateTime.Today;
             string dateStr = string.Format("{0} {1}, {2}", date.Day, date.ToString("MMMM"), date.Year);
+            string unsubscribeURL = "\"https://192.168.1.3:45455/emailUnreg/"+email+"\"";
 
             string body = string.Empty;
 

@@ -25,7 +25,7 @@ namespace Covid19Backend.Services.EmailServices.Helpers
                 mail.To.Add(email);
                 //mail.To.Add("czha959@aucklanduni.ac.nz");
                 mail.Subject = "Covid-19 Updates";
-                string body = _formatter.GenerateEmailBody(stats);
+                string body = _formatter.GenerateEmailBody(stats,email);
                 mail.Body = body;
                 mail.IsBodyHtml = true;
 

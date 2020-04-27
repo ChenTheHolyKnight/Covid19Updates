@@ -8,6 +8,6 @@ namespace Covid19Backend.Services.Formatter
 {
     public interface IEmailBodyFormatter
     {
-       public string GenerateEmailBody(DailyStats stats);
+       public string GenerateEmailBody(DailyStats stats,string email);
     }
 }
