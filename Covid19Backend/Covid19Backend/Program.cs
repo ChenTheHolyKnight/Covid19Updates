@@ -18,6 +18,7 @@ namespace Covid19Backend
                 .UseStartup<Startup>().ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<EmailWorker>();
+                    services.AddHostedService<StatsWorker>();
                 });
     }
 }
