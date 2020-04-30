@@ -1,7 +1,7 @@
 
 
 export class PostDataService{
-    apiURL= 'https://192.168.1.3:45455/api/email'
+    apiURL= 'https://192.168.1.19:45456/api/email'
 
     async postApiData(data) {
 
@@ -9,7 +9,7 @@ export class PostDataService{
             method: 'POST',
             mode: 'cors',
             headers: {
-                'Access-Control-Allow-Origin':'http://192.168.1.3',
+                'Access-Control-Allow-Origin':'http://192.168.1.19',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data),
@@ -21,7 +21,7 @@ export class PostDataService{
             method: 'DELETE',
             mode: 'cors',
             headers: {
-                'Access-Control-Allow-Origin':'http://192.168.1.3',
+                'Access-Control-Allow-Origin':'http://192.168.1.19',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data),
