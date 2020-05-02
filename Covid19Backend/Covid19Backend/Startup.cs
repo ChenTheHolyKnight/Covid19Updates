@@ -10,6 +10,7 @@ using Covid19Backend.Services.Formatter;
 using Covid19Backend.Services.GitHubDataAcquiringService;
 using Covid19Backend.Services.GitHubDataAcquiringService.Helpers;
 using Covid19Backend.Services.WebDataScrappingService;
+using Covid19Backend.Services.WorldDataServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -45,7 +46,8 @@ namespace Covid19Backend
             services.AddTransient<IGitHelper, GitHelper>();
             services.AddTransient<IExcelService, ExcelService>();
             services.AddTransient<IExcelHelper, ExcelHelper>();
-            services.AddTransient<IDirectoryHelper, DirectoryHelper>();          
+            services.AddTransient<IDirectoryHelper, DirectoryHelper>();
+            services.AddTransient<IWorldDataService, WorldDataService>();
             //Singleton
             services.AddSingleton<IStats, Stats>();
 
