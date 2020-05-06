@@ -1,7 +1,7 @@
 
 
 export class PostDataService{
-    apiURL= 'https://192.168.1.11:45456/api/email'
+    apiURL= 'https://192.168.1.3:45457/api/email'
 
     async postApiData(data) {
 
