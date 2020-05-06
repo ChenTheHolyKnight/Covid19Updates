@@ -5,6 +5,7 @@ import './App.css';
 import Layout from "./components/layout";
 import Home from "./components/Home/Home";
 import EmailUnreg from "./components/EmailRegistration/EmailUnreg";
+import WorldData from "./components/WorldData/WorldData";
 
 function App() {
   /*return (
@@ -30,6 +31,7 @@ function App() {
           <Router>
               <Route exact path='/' component={Home} />
               <Route path='/emailUnreg/:email' component={EmailUnreg} />
+              <Route path='/worldData' component={WorldData} />
           </Router>
       </Layout>
   )
