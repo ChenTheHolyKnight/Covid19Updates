@@ -14,4 +14,11 @@ export class SingleDataService{
         const response = await fetch(builtUrl);
         return await response.json();
     }
+
+    async getWorldData(){
+        let builtUrl = 'https://api.covid19api.com/summary';
+
+        const response = await fetch(builtUrl);
+        return await response.json();
+    }
 }

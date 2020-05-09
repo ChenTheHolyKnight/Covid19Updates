@@ -5,10 +5,19 @@ import CanvasJSReact from "../canvasjs.react";
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 export default class WorldDataTopRow extends Component{
+    constructor(props){
+        super(props)
+
+    }
+
     componentDidMount() {
     }
 
     render() {
+        const total = this.props.data.TotalConfirmed
+        const death = this.props.data.TotalDeaths
+        const recovered = this.props.data.TotalRecovered
+        const other = total-death-recovered
 
         const options = {
             exportEnabled: false,
@@ -22,9 +31,9 @@ export default class WorldDataTopRow extends Component{
                 indexLabelFontSize: 16,
                 indexLabel: "{label}: {y}%",
                 dataPoints: [
-                    { y: 30, label: "Recovered Cases" },
-                    { y: 35, label: "Death" },
-                    { y: 40,label: "Other"}
+                    { y: Math.round(recovered/total*100).toFixed(2), label: "Recovered Cases" },
+                    { y: Math.round(death/total*100).toFixed(2), label: "Death" },
+                    { y: Math.round(other/total*100).toFixed(2),label: "Other"}
                 ]
             }]
         }
