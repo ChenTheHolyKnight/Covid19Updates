@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import {Card, CardDeck, Form, FormControl, Button, Table, FormGroup} from "react-bootstrap";
 import CanvasJSReact from "../canvasjs.react";
 import {SingleDataService} from "../../service/SingleDataService";
+import TextField from "./TextField";
 
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -58,9 +59,10 @@ export default class WorldDataBottomRow extends Component{
         console.log("Changes")
     }
 
-     handleFormSubmit = (event)=>{
-        console.log("Fuck")
-        const selectedData = this.findArrayElementByCountry(this.state.countryData,this.selectedCountryName)
+    handleFormSubmit = (event)=>{
+        event.preventDefault()
+        const selectedData = this.findArrayElementByCountry(this.state.countryData,this.state.selectedCountryName)
+        debugger
         this.setState({
             selectedCountry: selectedData,
             selectedCountryName: 'Selected'
@@ -99,11 +101,11 @@ export default class WorldDataBottomRow extends Component{
             <Card>
                 <Card.Body>
                     <Card.Title>
-                        <Form inline onSubmit={this.handleFormSubmit = this.handleFormSubmit.bind(this)} style={{display: "flex",justifyContent: "flex-end"}}>
+                        <Form inline style={{display: "flex",justifyContent: "flex-end"}} onSubmit={this.handleFormSubmit}>
                             <FormGroup>
-                                <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={this.handleChange = this.handleChange.bind(this)}/>
+                                <FormControl type="text"  ref={this.textInput} placeholder="Search" onChange={this.handleChange = this.handleChange.bind(this)} />
                             </FormGroup>
-                            <Button variant="dark">Search</Button>
+                            <Button type="submit" variant={"dark"} style={{marginLeft:"1vh"}}>Submit</Button>
                         </Form>
                     </Card.Title>
 
