@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import {Card, CardDeck, Form, FormControl, Button, Table} from "react-bootstrap";
+import {Card, CardDeck, Form, FormControl, Button, Table, FormGroup} from "react-bootstrap";
 import CanvasJSReact from "../canvasjs.react";
 import {SingleDataService} from "../../service/SingleDataService";
 
@@ -24,10 +24,11 @@ export default class WorldDataBottomRow extends Component{
                 TotalConfirmed: Number,
                 TotalRecovered: Number,
                 TotalDeaths: Number
-            }
-
-
+            },
+            selectedCountryName: String
         }
+
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
 
     findArrayElementByCountry(array, country) {
@@ -47,6 +48,23 @@ export default class WorldDataBottomRow extends Component{
         })
 
 
+    }
+
+    handleChange(event){
+        event.preventDefault()
+        this.setState({
+            selectedCountryName: event.target.value
+        })
+        console.log("Changes")
+    }
+
+     handleFormSubmit = (event)=>{
+        console.log("Fuck")
+        const selectedData = this.findArrayElementByCountry(this.state.countryData,this.selectedCountryName)
+        this.setState({
+            selectedCountry: selectedData,
+            selectedCountryName: 'Selected'
+        })
     }
 
 
@@ -81,8 +99,10 @@ export default class WorldDataBottomRow extends Component{
             <Card>
                 <Card.Body>
                     <Card.Title>
-                        <Form inline style={{display: "flex",justifyContent: "flex-end"}}>
-                            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                        <Form inline onSubmit={this.handleFormSubmit = this.handleFormSubmit.bind(this)} style={{display: "flex",justifyContent: "flex-end"}}>
+                            <FormGroup>
+                                <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={this.handleChange = this.handleChange.bind(this)}/>
+                            </FormGroup>
                             <Button variant="dark">Search</Button>
                         </Form>
                     </Card.Title>

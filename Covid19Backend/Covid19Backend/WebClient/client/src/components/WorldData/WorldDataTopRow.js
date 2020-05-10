@@ -1,16 +1,37 @@
 import React,{Component} from 'react'
 import {Card, CardDeck} from "react-bootstrap";
 import CanvasJSReact from "../canvasjs.react";
+import {SingleDataService} from "../../service/SingleDataService";
 
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 export default class WorldDataTopRow extends Component{
     constructor(props){
         super(props)
+        this.state={
+            globalData:{
+                NewConfirmed: Number,
+                TotalConfirmed: Number,
+                NewDeaths: Number,
+                TotalDeaths: Number,
+                NewRecovered: Number,
+                TotalRecovered: Number
+            },
+            countryData: [],
 
+
+
+        }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+        const service = new SingleDataService()
+        let response = await service.getWorldData()
+        let countriesData = response.Countries.map((element)=>({y:element.TotalConfirmed, label:element.Country})).sort((a, b) => a.y < b.y ? 1 : -1)
+        this.setState({
+            globalData:    response.Global,
+            countryData: countriesData
+        })
     }
 
     render() {
@@ -54,15 +75,7 @@ export default class WorldDataTopRow extends Component{
             },
             data: [{
                 type: "bar",
-                dataPoints: [
-                    { y:  2200000000, label: "Facebook" },
-                    { y:  1800000000, label: "YouTube" },
-                    { y:  800000000, label: "Instagram" },
-                    { y:  563000000, label: "Qzone" },
-                    { y:  376000000, label: "Weibo" },
-                    { y:  336000000, label: "Twitter" },
-                    { y:  330000000, label: "Reddit" }
-                ]
+                dataPoints: this.state.countryData.slice(0,10)
             }]
         }
 
