@@ -13,7 +13,8 @@ export default function NavMenu() {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link href="/ ">Home</Nav.Link>
-                        <Nav.Link href="/worldData">World Statistics</Nav.Link>
+                        <Nav.Link href="/newZealand">New Zealand</Nav.Link>
+                        <Nav.Link href="/other">Other Country</Nav.Link>
                     </Nav>
                     <EmailRegModal/>
                 </Navbar.Collapse>

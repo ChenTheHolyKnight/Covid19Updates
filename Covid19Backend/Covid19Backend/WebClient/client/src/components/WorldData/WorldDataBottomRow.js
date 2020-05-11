@@ -26,7 +26,8 @@ export default class WorldDataBottomRow extends Component{
                 TotalRecovered: Number,
                 TotalDeaths: Number
             },
-            selectedCountryName: String
+            selectedCountryName: String,
+            countryName: 'New Zealand'
         }
 
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -65,7 +66,7 @@ export default class WorldDataBottomRow extends Component{
         debugger
         this.setState({
             selectedCountry: selectedData,
-            selectedCountryName: 'Selected'
+            countryName: this.state.selectedCountryName
         })
     }
 
@@ -111,7 +112,7 @@ export default class WorldDataBottomRow extends Component{
 
                     <CardDeck>
                         <Card>
-                            <Card.Title style={{marginTop:"3vh",marginLeft:"3vh"}}> Summary</Card.Title>
+                            <Card.Title style={{marginTop:"3vh",marginLeft:"3vh"}}>{this.state.countryName} Summary</Card.Title>
                             <Card.Body>
                                 <Table style={{marginTop: '10vh'}}>
                                     <thead>

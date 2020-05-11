@@ -6,6 +6,8 @@ import Layout from "./components/layout";
 import Home from "./components/Home/Home";
 import EmailUnreg from "./components/EmailRegistration/EmailUnreg";
 import WorldData from "./components/WorldData/WorldData";
+import WorldDataTopRow from "./components/WorldData/WorldDataTopRow";
+import WorldDataBottomRow from "./components/WorldData/WorldDataBottomRow";
 
 function App() {
   /*return (
@@ -29,9 +31,10 @@ function App() {
   return (
       <Layout>
           <Router>
-              <Route exact path='/' component={Home} />
+              <Route exact path='/' component={WorldDataTopRow} />
               <Route path='/emailUnreg/:email' component={EmailUnreg} />
-              <Route path='/worldData' component={WorldData} />
+              <Route path='/newZealand' component={Home} />
+              <Route path='/other' component={WorldDataBottomRow} />
           </Router>
       </Layout>
   )

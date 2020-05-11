@@ -24,7 +24,7 @@ export default class WorldDataTopRow extends Component{
         }
     }
 
-    async componentDidMount() {
+    async componentWillMount() {
         const service = new SingleDataService()
         let response = await service.getWorldData()
         let countriesData = response.Countries.map((element)=>({y:element.TotalConfirmed, label:element.Country})).sort((a, b) => a.y < b.y ? 1 : -1)
@@ -35,9 +35,9 @@ export default class WorldDataTopRow extends Component{
     }
 
     render() {
-        const total = this.props.data.TotalConfirmed
-        const death = this.props.data.TotalDeaths
-        const recovered = this.props.data.TotalRecovered
+        const total = this.state.globalData.TotalConfirmed
+        const death = this.state.globalData.TotalDeaths
+        const recovered = this.state.globalData.TotalRecovered
         const other = total-death-recovered
 
         const options = {
@@ -79,7 +79,7 @@ export default class WorldDataTopRow extends Component{
             }]
         }
 
-        return <CardDeck>
+        return <CardDeck style={{marginTop:'2vh'}}>
             <Card>
                 <Card.Body>
                     <Card.Title> World Summary</Card.Title>
