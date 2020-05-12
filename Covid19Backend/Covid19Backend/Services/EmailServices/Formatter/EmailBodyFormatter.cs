@@ -56,8 +56,8 @@ namespace Covid19Backend.Services.Formatter
                                 <p>Number of recovered cases:   " + stats.RecoveredCases + @"</p>
                                 <p>Number of deaths:            "+	stats.TotalDeath + @"</p>
                                 <div class=""w3-row"">
-                                    <div class=""w3-col m8 s12"">
-                                        <p><button class=""w3-button w3-padding-large w3-white w3-border"" onClick=""location.href='https://192.168.1.3:45458'""><b>READ MORE »</b></button></p>
+                                    <div class=""w3-col m8 s12"">                                       
+                                        <p><button class=""w3-button w3-padding-large w3-white w3-border""><a href=""https://192.168.1.3:45458/""><b>READ MORE »</b></a></button></p-->
                                 </div>
                             </div>
                         </div>
