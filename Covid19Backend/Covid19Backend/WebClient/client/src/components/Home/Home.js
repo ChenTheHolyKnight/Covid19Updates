@@ -25,7 +25,7 @@ export default class Home extends Component{
             }
         }
     }
-    async componentDidMount() {
+    async componentWillMount() {
         const service = new SingleDataService()
         let data = await service.getApiData(ApiCallType.DailyReport);
         this.setState({

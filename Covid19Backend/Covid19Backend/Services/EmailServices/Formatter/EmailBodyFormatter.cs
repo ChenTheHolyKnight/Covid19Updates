@@ -15,7 +15,7 @@ namespace Covid19Backend.Services.Formatter
         {
             DateTime date = DateTime.Today;
             string dateStr = string.Format("{0} {1}, {2}", date.Day, date.ToString("MMMM"), date.Year);
-            string unsubscribeURL = "\"https://192.168.1.3:45457/emailUnreg/" + email+"\"";
+            string unsubscribeURL = "\"https://192.168.1.3:45458/emailUnreg/" + email+"\"";
 
             string body = string.Empty;
 
@@ -57,14 +57,14 @@ namespace Covid19Backend.Services.Formatter
                                 <p>Number of deaths:            "+	stats.TotalDeath + @"</p>
                                 <div class=""w3-row"">
                                     <div class=""w3-col m8 s12"">
-                                        <p><button class=""w3-button w3-padding-large w3-white w3-border""><b>READ MORE »</b></button></p>
+                                        <p><button class=""w3-button w3-padding-large w3-white w3-border"" onClick=""location.href='https://192.168.1.3:45458'""><b>READ MORE »</b></button></p>
                                 </div>
                             </div>
                         </div>
                      </div>
                      <hr>
                     </div>
-                         <p class=""w3-center"" style=""text-align: center;""><a href=""https://192.168.1.3:45457/emailUnreg/czha959@aucklanduni.ac.nz"">Unsubscribe</a></p>
+                         <p class=""w3-center"" style=""text-align: center;""><a href=""https://192.168.1.3:45458/emailUnreg/czha959@aucklanduni.ac.nz"">Unsubscribe</a></p>
 
                     
 
